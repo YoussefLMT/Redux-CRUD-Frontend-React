@@ -10,6 +10,10 @@ function App() {
             <div class="card-header">
               Users Managment
 
+              {/* Button trigger add user modal */}
+            <button type="button" class="btn btn-primary" style={{float: 'right'}} data-bs-toggle="modal" data-bs-target="#addUserModal">
+                Add User
+            </button>
             </div>
           </div>
           <div class="card-body">
