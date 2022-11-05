@@ -6,18 +6,18 @@ function App() {
       <h2 className='text-center'>Redux CRUD</h2>
       <div className="row mt-5">
         <div className="col-md-9 mx-auto">
-          <div class="card">
-            <div class="card-header">
+          <div className="card">
+            <div className="card-header">
               Users Managment
 
               {/* Button trigger add user modal */}
-              <button type="button" class="btn btn-primary" style={{ float: 'right' }} data-bs-toggle="modal" data-bs-target="#addUserModal">
+              <button type="button" className="btn btn-primary" style={{ float: 'right' }} data-bs-toggle="modal" data-bs-target="#addUserModal">
                 Add User
               </button>
             </div>
           </div>
-          <div class="card-body">
-            <table class="table">
+          <div className="card-body">
+            <table className="table">
               <thead>
                 <tr>
                   <th scope="col">ID</th>
@@ -46,30 +46,30 @@ function App() {
       </div>
 
       {/* Add User Modal  */}
-      <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Add New Product</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div className="modal fade" id="addUserModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">Add New Product</h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <form>
-                <div class="mb-3">
-                  <label for="name" class="form-label">Name</label>
-                  <input type="text" class="form-control" id="name" />
+                <div className="mb-3">
+                  <label htmlFor="name" className="form-label">Name</label>
+                  <input type="text" className="form-control" id="name" />
                 </div>
-                <div class="mb-3">
-                  <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="email" />
+                <div className="mb-3">
+                  <label htmlFor="email" className="form-label">Email</label>
+                  <input type="email" className="form-control" id="email" />
                 </div>
-                <div class="mb-3">
-                  <label for="passowrd" class="form-label">Password</label>
-                  <input type="passowrd" class="form-control" id="passowrd" />
+                <div className="mb-3">
+                  <label htmlFor="passowrd" className="form-label">Password</label>
+                  <input type="passowrd" className="form-control" id="passowrd" />
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" className="btn btn-primary">Save changes</button>
                 </div>
               </form>
             </div>
