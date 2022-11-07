@@ -16,7 +16,7 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    getUsers()
+    dispatch(getUsers())
   }, [dispatch])
 
   const Toast = Swal.mixin({
