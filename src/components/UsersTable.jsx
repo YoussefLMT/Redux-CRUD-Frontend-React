@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import axiosInstance from '../axios';
 
 function UsersTable(props) {
@@ -12,6 +12,15 @@ function UsersTable(props) {
             console.log(error)
         }
     }
+
+    const getUser = async (id) => {
+        const response = await axiosInstance.get(`users/${id}`)
+        console.log(response.data.user)
+    }
+
+    useEffect(() => {
+        getUser()
+    }, [])
 
     return (
         <table className="table">
@@ -33,7 +42,7 @@ function UsersTable(props) {
                                 <td>{user.email}</td>
                                 <td>
                                     <button type="button" onClick={(e) => deleteUser(e, user.id)} class="btn btn-danger">Delete</button>
-                                    
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#updateUserModal" onClick={() => getUser(user.id)} class="btn btn-warning">Update</button>
                                 </td>
                             </tr>
                         )
