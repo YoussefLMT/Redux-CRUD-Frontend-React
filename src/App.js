@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axiosInstance from './axios'
 import Swal from 'sweetalert2'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getUsers } from './features/usersSlice';
 
 function App() {
@@ -14,6 +14,8 @@ function App() {
   })
 
   const dispatch = useDispatch()
+
+  const { users, loading} = useSelector((state) => state.users)
 
   useEffect(() => {
     dispatch(getUsers())
