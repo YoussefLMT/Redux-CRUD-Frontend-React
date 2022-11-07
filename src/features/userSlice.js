@@ -15,6 +15,20 @@ const userSlice = createSlice({
     initialState: {
         users: [],
         loading: false,
-        error: null
+        error: false
     },
+    extraReducers: (builder) => {
+        builder.addCase(getUsers.pending, (state) => {
+            state.loading = true
+        })
+        builder.addCase(getUsers.fulfilled, (state, action) => {
+            state.loading = false
+            state.error = false
+            state.users = action.payload
+        })
+        builder.addCase(getUsers.rejected, (state) => {
+            state.error = true
+            state.loading = false
+        })
+    }
 })
