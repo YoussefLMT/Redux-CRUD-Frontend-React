@@ -1,6 +1,18 @@
 import React from 'react'
+import axiosInstance from '../axios';
 
 function UsersTable(props) {
+
+    const deleteUser = async (e, id) => {
+        const deleteBtn = e.currentTarget;
+        try {
+            await axiosInstance.delete(`/users/${id}`)
+            deleteBtn.closest('tr').remove();
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <table className="table">
             <thead>
@@ -19,6 +31,9 @@ function UsersTable(props) {
                                 <th scope="row">{user.id}</th>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
+                                <td>
+                                    <button type="button" onClick={(e) => deleteUser(e, user.id)} class="btn btn-danger">Delete</button>
+                                </td>
                             </tr>
                         )
                     })
