@@ -4,6 +4,7 @@ import Swal from 'sweetalert2'
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsers } from './features/usersSlice';
 import UsersTable from './components/UsersTable';
+import Pagination from './components/Pagination';
 
 function App() {
 
@@ -14,16 +15,16 @@ function App() {
     errors: [],
   })
   const [currentPage, setCurrentPage] = useState(1)
-  const [carsPerPage] = useState(5)
+  const [usersPerPage] = useState(5)
 
   const dispatch = useDispatch()
 
   const { users, loading } = useSelector((state) => state.users)
 
-  const indexOfLastCar = currentPage * carsPerPage
-  const indexOfFirstCar = indexOfLastCar - carsPerPage
-  const currentCars = users.slice(indexOfFirstCar, indexOfLastCar)
-  
+  const indexOfLastCar = currentPage * usersPerPage
+  const indexOfFirstCar = indexOfLastCar - usersPerPage
+  const currentUsers = users.slice(indexOfFirstCar, indexOfLastCar)
+
   useEffect(() => {
     dispatch(getUsers())
   }, [dispatch])
@@ -83,6 +84,7 @@ function App() {
             <div className="card-body">
               <UsersTable users={users} />
               {loading && <h4 className='text-center'>Loading...</h4>}
+              <Pagination usersPerPage={usersPerPage} totalUsers={users.length}/>
             </div>
           </div>
         </div>

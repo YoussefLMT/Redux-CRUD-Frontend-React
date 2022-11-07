@@ -4,9 +4,11 @@ function Pagination(props) {
 
     const pageNumbers = []
 
-    for (let i = 1; i <= Math.ceil(props.totalusers / props.usersPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(props.totalUsers / props.usersPerPage); i++) {
         pageNumbers.push(i)
     }
+
+    console.log(pageNumbers)
 
     return (
         <nav>
