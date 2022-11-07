@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2';
+import { store } from '../app/store';
 import axiosInstance from '../axios';
+import { getUsers } from '../features/usersSlice';
 
 function UsersTable(props) {
 
@@ -54,6 +56,7 @@ function UsersTable(props) {
                 icon: 'success',
                 title: response.data.message
             })
+            store.dispatch(getUsers())
         } else if (response.data.status === 422) {
             setErrors(response.data.validation_err)
         }
