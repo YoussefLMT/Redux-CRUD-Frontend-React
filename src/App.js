@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axiosInstance from './axios'
 import Swal from 'sweetalert2'
+import { useDispatch } from 'react-redux';
+import { getUsers } from './features/usersSlice';
 
 function App() {
 
@@ -10,6 +12,12 @@ function App() {
     password: '',
     errors: [],
   })
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    getUsers()
+  }, [dispatch])
 
   const Toast = Swal.mixin({
     toast: true,
