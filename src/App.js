@@ -105,14 +105,17 @@ function App() {
                 <div className="mb-3">
                   <label htmlFor="name" className="form-label">Name</label>
                   <input type="text" name='name' value={form.name} onChange={handleChange} className="form-control" id="name" />
+                  <span className='text-danger'>{form.errors.name}</span>
                 </div>
                 <div className="mb-3">
                   <label htmlFor="email" className="form-label">Email</label>
                   <input type="email" name='email' value={form.email} onChange={handleChange} className="form-control" id="email" />
+                  <span className='text-danger'>{form.errors.email}</span>
                 </div>
                 <div className="mb-3">
                   <label htmlFor="passowrd" className="form-label">Password</label>
                   <input type="passowrd" name='password' value={form.password} onChange={handleChange} className="form-control" id="passowrd" />
+                  <span className='text-danger'>{form.errors.password}</span>
                 </div>
                 <div className="modal-footer">
                   <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
