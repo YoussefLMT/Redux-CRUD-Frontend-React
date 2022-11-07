@@ -82,9 +82,9 @@ function App() {
               </button>
             </div>
             <div className="card-body">
-              <UsersTable users={users} />
+              <UsersTable users={currentUsers} />
               {loading && <h4 className='text-center'>Loading...</h4>}
-              <Pagination usersPerPage={usersPerPage} totalUsers={users.length}/>
+              <Pagination usersPerPage={usersPerPage} totalUsers={users.length} paginate={number => setCurrentPage(number)}/>
             </div>
           </div>
         </div>
