@@ -15,7 +15,10 @@ function UsersTable(props) {
         }
     }
 
+    const [id, setId] = useState(0)
+
     const getUser = async (id) => {
+        setId(id)
         try {
             const response = await axiosInstance.get(`users/${id}`)
             setUser(response.data.user)
@@ -27,6 +30,16 @@ function UsersTable(props) {
     const handleChange = (e) => {
         e.persist();
         setUser({ ...user, [e.target.name]: e.target.value });
+    }
+
+    const updateUser = async (e) => {
+        e.preventDefault();
+        const response = await axiosInstance.put(`users/${id}`, user)
+        if (response.data.status === 200) {
+            console.log(response.data.message)
+        } else if (response.data.status === 422) {
+            console.log(response.data.validation_err)
+        }
     }
 
     useEffect(() => {
@@ -72,7 +85,7 @@ function UsersTable(props) {
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            <form>
+                            <form onSubmit={updateUser}>
                                 <div className="mb-3">
                                     <label htmlFor="name" className="form-label">Name</label>
                                     <input type="text" name='name' value={user?.name || ''} onChange={handleChange} className="form-control" id="name" />
