@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axiosInstance from './axios'
+import Swal from 'sweetalert2'
 
 function App() {
 
@@ -8,6 +9,18 @@ function App() {
     email: '',
     password: '',
     errors: [],
+  })
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 2000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
   })
 
   const handleChange = (e) => {
@@ -25,7 +38,14 @@ function App() {
     }
 
     const response = await axiosInstance.post('/users', data)
-    console.log(response.data)
+    if (response.data.status === 200) {
+      Toast.fire({
+        icon: 'success',
+        title: response.data.message
+      })
+    } else {
+      setForm({ ...form, errors: response.data.validation_err });
+    }
   }
 
   return (
