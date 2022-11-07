@@ -10,7 +10,7 @@ export const getUsers = createAsyncThunk('users/getUsers', async () => {
     }
 })
 
-const userSlice = createSlice({
+const usersSlice = createSlice({
     name: "users",
     initialState: {
         users: [],
@@ -32,3 +32,5 @@ const userSlice = createSlice({
         })
     }
 })
+
+export default usersSlice.reducer
