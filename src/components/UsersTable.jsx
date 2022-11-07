@@ -1,9 +1,23 @@
 import React, { useEffect, useState } from 'react'
+import Swal from 'sweetalert2';
 import axiosInstance from '../axios';
 
 function UsersTable(props) {
 
     const [user, setUser] = useState({})
+    const [errors, setErrors] = useState([]);
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
 
     const deleteUser = async (e, id) => {
         const deleteBtn = e.currentTarget;
@@ -36,9 +50,12 @@ function UsersTable(props) {
         e.preventDefault();
         const response = await axiosInstance.put(`users/${id}`, user)
         if (response.data.status === 200) {
-            console.log(response.data.message)
+            Toast.fire({
+                icon: 'success',
+                title: response.data.message
+            })
         } else if (response.data.status === 422) {
-            console.log(response.data.validation_err)
+            setErrors(response.data.validation_err)
         }
     }
 
@@ -89,10 +106,12 @@ function UsersTable(props) {
                                 <div className="mb-3">
                                     <label htmlFor="name" className="form-label">Name</label>
                                     <input type="text" name='name' value={user?.name || ''} onChange={handleChange} className="form-control" id="name" />
+                                    <span className='text-danger'>{errors.name}</span>
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="email" className="form-label">Email</label>
                                     <input type="email" name='email' value={user?.email || ''} onChange={handleChange} className="form-control" id="email" />
+                                    <span className='text-danger'>{errors.email}</span>
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="password" className="form-label">Password</label>

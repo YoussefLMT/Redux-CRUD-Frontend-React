@@ -18,8 +18,6 @@ function App() {
 
   const { users, loading} = useSelector((state) => state.users)
 
-  // console.log(users)
-
   useEffect(() => {
     dispatch(getUsers())
   }, [dispatch])
