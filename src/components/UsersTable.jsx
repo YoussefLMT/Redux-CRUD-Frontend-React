@@ -1,6 +1,6 @@
 import React from 'react'
 
-function UsersTable() {
+function UsersTable(props) {
     return (
         <table className="table">
             <thead>
@@ -12,18 +12,15 @@ function UsersTable() {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
+                {
+                    props.users.map((user) => {
+                        <tr key={user.id}>
+                            <th scope="row">{user.id}</th>
+                            <td>{user.name}</td>
+                            <td>{user.email}</td>
+                        </tr>
+                    })
+                }
             </tbody>
         </table>
     )

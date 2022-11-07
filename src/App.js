@@ -3,6 +3,7 @@ import axiosInstance from './axios'
 import Swal from 'sweetalert2'
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsers } from './features/usersSlice';
+import UsersTable from './components/UsersTable';
 
 function App() {
 
@@ -16,6 +17,8 @@ function App() {
   const dispatch = useDispatch()
 
   const { users, loading} = useSelector((state) => state.users)
+
+  console.log(users)
 
   useEffect(() => {
     dispatch(getUsers())
@@ -73,7 +76,7 @@ function App() {
               </button>
             </div>
             <div className="card-body">
-              
+              {/* <UsersTable users={users.users}/> */}
             </div>
           </div>
         </div>
