@@ -77,6 +77,7 @@ function App() {
             </div>
             <div className="card-body">
               <UsersTable users={users}/>
+              { loading && <h4 className='text-center'>Loading...</h4> }
             </div>
           </div>
         </div>
