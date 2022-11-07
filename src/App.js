@@ -16,14 +16,14 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1)
   const [carsPerPage] = useState(5)
 
-  const indexOfLastCar = currentPage * carsPerPage
-  const indexOfFirstCar = indexOfLastCar - carsPerPage
-  const currentCars = cars.slice(indexOfFirstCar, indexOfLastCar)
-
   const dispatch = useDispatch()
 
   const { users, loading } = useSelector((state) => state.users)
 
+  const indexOfLastCar = currentPage * carsPerPage
+  const indexOfFirstCar = indexOfLastCar - carsPerPage
+  const currentCars = users.slice(indexOfFirstCar, indexOfLastCar)
+  
   useEffect(() => {
     dispatch(getUsers())
   }, [dispatch])
