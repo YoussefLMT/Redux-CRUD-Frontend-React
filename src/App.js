@@ -9,6 +9,11 @@ function App() {
     errors: [],
   })
 
+  const handleChange = (e) => {
+    e.persist();
+    setForm({ ...form, [e.target.name]: e.target.value });
+  }
+
   return (
     <div className="container mt-5">
       <h2 className='text-center'>Redux CRUD</h2>
@@ -65,15 +70,15 @@ function App() {
               <form>
                 <div className="mb-3">
                   <label htmlFor="name" className="form-label">Name</label>
-                  <input type="text" className="form-control" id="name" />
+                  <input type="text" name='name' value={form.name} handleChange={handleChange} className="form-control" id="name" />
                 </div>
                 <div className="mb-3">
                   <label htmlFor="email" className="form-label">Email</label>
-                  <input type="email" className="form-control" id="email" />
+                  <input type="email" name='email' value={form.email} handleChange={handleChange} className="form-control" id="email" />
                 </div>
                 <div className="mb-3">
                   <label htmlFor="passowrd" className="form-label">Password</label>
-                  <input type="passowrd" className="form-control" id="passowrd" />
+                  <input type="passowrd" name='password' value={form.password} handleChange={handleChange} className="form-control" id="passowrd" />
                 </div>
                 <div className="modal-footer">
                   <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
