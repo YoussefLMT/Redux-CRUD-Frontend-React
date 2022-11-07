@@ -33,6 +33,7 @@ function UsersTable(props) {
                                 <td>{user.email}</td>
                                 <td>
                                     <button type="button" onClick={(e) => deleteUser(e, user.id)} class="btn btn-danger">Delete</button>
+                                    
                                 </td>
                             </tr>
                         )
