@@ -3,6 +3,9 @@ import axiosInstance from '../axios';
 
 function UsersTable(props) {
 
+    const [user, setUser] = useState([])
+
+
     const deleteUser = async (e, id) => {
         const deleteBtn = e.currentTarget;
         try {
@@ -14,8 +17,12 @@ function UsersTable(props) {
     }
 
     const getUser = async (id) => {
-        const response = await axiosInstance.get(`users/${id}`)
-        console.log(response.data.user)
+        try {
+            const response = await axiosInstance.get(`users/${id}`)
+            setUser(response.data.user)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     useEffect(() => {
