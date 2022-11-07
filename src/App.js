@@ -56,6 +56,7 @@ function App() {
         icon: 'success',
         title: response.data.message
       })
+      dispatch(getUsers())
     } else {
       setForm({ ...form, errors: response.data.validation_err });
     }
