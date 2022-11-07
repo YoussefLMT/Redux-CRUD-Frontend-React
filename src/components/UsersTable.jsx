@@ -87,7 +87,7 @@ function UsersTable(props) {
                                     <td>{user.email}</td>
                                     <td>
                                         <button type="button" onClick={(e) => deleteUser(e, user.id)} class="btn btn-danger"><i class="fa-sharp fa-solid fa-trash"></i></button>
-                                        <button type="button" data-bs-toggle="modal" data-bs-target="#updateUserModal" onClick={() => getUser(user.id)} class="btn btn-warning"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button>
+                                        <button type="button" style={{marginLeft: '10px'}} data-bs-toggle="modal" data-bs-target="#updateUserModal" onClick={() => getUser(user.id)} class="btn btn-warning"><i class="fa-sharp fa-solid fa-pen-to-square"></i></button>
                                     </td>
                                 </tr>
                             )
