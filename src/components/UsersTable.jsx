@@ -3,8 +3,7 @@ import axiosInstance from '../axios';
 
 function UsersTable(props) {
 
-    const [user, setUser] = useState([])
-
+    const [user, setUser] = useState({})
 
     const deleteUser = async (e, id) => {
         const deleteBtn = e.currentTarget;
@@ -71,15 +70,15 @@ function UsersTable(props) {
                             <form>
                                 <div className="mb-3">
                                     <label htmlFor="name" className="form-label">Name</label>
-                                    <input type="text" name='name' className="form-control" id="name" />
+                                    <input type="text" name='name' value={user?.name} className="form-control" id="name" />
                                 </div>
                                 <div className="mb-3">
-                                    <label htmlFor="model" className="form-label">Email</label>
-                                    <input type="text" name='model_year'  className="form-control" id="model" />
+                                    <label htmlFor="email" className="form-label">Email</label>
+                                    <input type="email" name='email' value={user?.email} className="form-control" id="email" />
                                 </div>
                                 <div className="mb-3">
-                                    <label htmlFor="color" className="form-label">Password</label>
-                                    <input type="text" name='color' className="form-control" id="color" />
+                                    <label htmlFor="password" className="form-label">Password</label>
+                                    <input type="password" name='password' value={user?.passowrd} className="form-control" id="password" />
                                 </div>
                                 <div className="modal-footer">
                                     <button type="submit" className="btn btn-primary">Update</button>
