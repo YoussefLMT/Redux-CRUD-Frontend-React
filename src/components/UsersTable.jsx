@@ -24,6 +24,11 @@ function UsersTable(props) {
         }
     }
 
+    const handleChange = (e) => {
+        e.persist();
+        setUser({ ...user, [e.target.name]: e.target.value });
+    }
+
     useEffect(() => {
         getUser()
     }, [])
@@ -70,15 +75,15 @@ function UsersTable(props) {
                             <form>
                                 <div className="mb-3">
                                     <label htmlFor="name" className="form-label">Name</label>
-                                    <input type="text" name='name' value={user?.name} className="form-control" id="name" />
+                                    <input type="text" name='name' value={user?.name || ''} onChange={handleChange} className="form-control" id="name" />
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="email" className="form-label">Email</label>
-                                    <input type="email" name='email' value={user?.email} className="form-control" id="email" />
+                                    <input type="email" name='email' value={user?.email || ''} onChange={handleChange} className="form-control" id="email" />
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="password" className="form-label">Password</label>
-                                    <input type="password" name='password' value={user?.passowrd} className="form-control" id="password" />
+                                    <input type="password" name='password' value={user?.passowrd} onChange={handleChange} className="form-control" id="password" />
                                 </div>
                                 <div className="modal-footer">
                                     <button type="submit" className="btn btn-primary">Update</button>
