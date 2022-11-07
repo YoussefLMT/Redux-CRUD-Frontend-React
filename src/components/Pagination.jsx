@@ -16,7 +16,7 @@ function Pagination(props) {
                 {
                     pageNumbers.map((number) => (
                         <li key={number} className="page-item">
-                            <a className="page-link" onClick={() => props.paginate(number)} href="#">{number}</a>
+                            <button className="page-link" onClick={() => props.paginate(number)} href="#">{number}</button>
                         </li>
                     ))
                 }
