@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function App() {
+
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    password: '',
+    errors: [],
+  })
+
   return (
     <div className="container mt-5">
       <h2 className='text-center'>Redux CRUD</h2>
