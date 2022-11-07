@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axiosInstance from './axios'
 
 function App() {
 
@@ -12,6 +13,19 @@ function App() {
   const handleChange = (e) => {
     e.persist();
     setForm({ ...form, [e.target.name]: e.target.value });
+  }
+
+  const addNewUser = async (e) => {
+    e.preventDefault()
+
+    const data = {
+      name: form.name,
+      email: form.email,
+      password: form.password
+    }
+
+    const response = await axiosInstance.post('/users', data)
+    console.log(response.data)
   }
 
   return (
@@ -67,22 +81,22 @@ function App() {
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
-              <form>
+              <form onSubmit={addNewUser}>
                 <div className="mb-3">
                   <label htmlFor="name" className="form-label">Name</label>
-                  <input type="text" name='name' value={form.name} handleChange={handleChange} className="form-control" id="name" />
+                  <input type="text" name='name' value={form.name} onChange={handleChange} className="form-control" id="name" />
                 </div>
                 <div className="mb-3">
                   <label htmlFor="email" className="form-label">Email</label>
-                  <input type="email" name='email' value={form.email} handleChange={handleChange} className="form-control" id="email" />
+                  <input type="email" name='email' value={form.email} onChange={handleChange} className="form-control" id="email" />
                 </div>
                 <div className="mb-3">
                   <label htmlFor="passowrd" className="form-label">Password</label>
-                  <input type="passowrd" name='password' value={form.password} handleChange={handleChange} className="form-control" id="passowrd" />
+                  <input type="passowrd" name='password' value={form.password} onChange={handleChange} className="form-control" id="passowrd" />
                 </div>
                 <div className="modal-footer">
                   <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" className="btn btn-primary">Save changes</button>
+                  <button type="submit" className="btn btn-primary">Save changes</button>
                 </div>
               </form>
             </div>
