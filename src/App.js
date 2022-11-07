@@ -13,10 +13,16 @@ function App() {
     password: '',
     errors: [],
   })
+  const [currentPage, setCurrentPage] = useState(1)
+  const [carsPerPage] = useState(5)
+
+  const indexOfLastCar = currentPage * carsPerPage
+  const indexOfFirstCar = indexOfLastCar - carsPerPage
+  const currentCars = cars.slice(indexOfFirstCar, indexOfLastCar)
 
   const dispatch = useDispatch()
 
-  const { users, loading} = useSelector((state) => state.users)
+  const { users, loading } = useSelector((state) => state.users)
 
   useEffect(() => {
     dispatch(getUsers())
@@ -75,8 +81,8 @@ function App() {
               </button>
             </div>
             <div className="card-body">
-              <UsersTable users={users}/>
-              { loading && <h4 className='text-center'>Loading...</h4> }
+              <UsersTable users={users} />
+              {loading && <h4 className='text-center'>Loading...</h4>}
             </div>
           </div>
         </div>
