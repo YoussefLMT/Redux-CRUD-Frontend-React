@@ -18,7 +18,7 @@ function App() {
 
   const { users, loading} = useSelector((state) => state.users)
 
-  console.log(users)
+  // console.log(users)
 
   useEffect(() => {
     dispatch(getUsers())
@@ -76,7 +76,7 @@ function App() {
               </button>
             </div>
             <div className="card-body">
-              {/* <UsersTable users={users.users}/> */}
+              <UsersTable users={users}/>
             </div>
           </div>
         </div>

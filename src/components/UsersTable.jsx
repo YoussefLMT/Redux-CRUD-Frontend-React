@@ -14,11 +14,13 @@ function UsersTable(props) {
             <tbody>
                 {
                     props.users.map((user) => {
-                        <tr key={user.id}>
-                            <th scope="row">{user.id}</th>
-                            <td>{user.name}</td>
-                            <td>{user.email}</td>
-                        </tr>
+                        return (
+                            <tr key={user.id}>
+                                <th scope="row">{user.id}</th>
+                                <td>{user.name}</td>
+                                <td>{user.email}</td>
+                            </tr>
+                        )
                     })
                 }
             </tbody>
