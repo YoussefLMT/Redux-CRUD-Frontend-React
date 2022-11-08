@@ -8,8 +8,6 @@ function Pagination(props) {
         pageNumbers.push(i)
     }
 
-    console.log(pageNumbers)
-
     return (
         <nav>
             <ul className="pagination">
